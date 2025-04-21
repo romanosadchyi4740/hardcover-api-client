@@ -2,6 +2,7 @@ package com.coursework.bookstore_graphql_client.client;
 
 import com.coursework.bookstore_graphql_client.dto.BookDto;
 import com.coursework.bookstore_graphql_client.dto.LanguageDto;
+import com.coursework.bookstore_graphql_client.dto.PublisherDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.client.HttpGraphQlClient;
 import org.springframework.stereotype.Component;
@@ -26,6 +27,7 @@ public class BookstoreClient {
                          title
                          contributions {
                              author {
+                                 id
                                  name
                              }
                          }
@@ -50,6 +52,20 @@ public class BookstoreClient {
         return httpGraphQlClient.document(graphQLQuery)
                 .retrieve("languages")
                 .toEntityList(LanguageDto.class).block();
+    }
+
+    public List<PublisherDto> getPublishers() {
+        String graphQLQuery = """
+                query Publishers {
+                    publishers(where: {id: { _lt: 200 } }) {
+                        id
+                        name
+                    }
+                }""";
+
+        return httpGraphQlClient.document(graphQLQuery)
+                .retrieve("publishers")
+                .toEntityList(PublisherDto.class).block();
     }
 
 }

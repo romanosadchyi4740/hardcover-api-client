@@ -16,7 +16,17 @@ public class BookDto {
     private List<BookContributionsDto> contributions = new ArrayList<>();
     private double price = Math.round(Math.random() * 100 + 50);
     private int numberInStock = (int) Math.round(Math.random() * 100);
-    private String language;
+    private int languageId = (int) Math.ceil(Math.random() * 185);
+    private List<GenreDto> cached_tags = new ArrayList<>();
+    private int publisherId = (int) (Math.random() < 0.5 ? Math.ceil(Math.random() * 9) :
+            58 + Math.ceil(Math.random() * 89));
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class GenreDto {
+        private String tag;
+    }
 
     @Data
     @AllArgsConstructor
@@ -28,6 +38,7 @@ public class BookDto {
         @AllArgsConstructor
         @NoArgsConstructor
         public static class BookAuthorDto {
+            private int id;
             private String name;
         }
     }

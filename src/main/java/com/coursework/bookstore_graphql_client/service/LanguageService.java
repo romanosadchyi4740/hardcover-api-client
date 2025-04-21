@@ -28,9 +28,7 @@ public class LanguageService {
 
     @Transactional
     public void saveLanguages(List<LanguageDto> languageDtos) {
-        for (LanguageDto languageDto : languageDtos) {
-            languageRepository.save(LanguageMapper.toModel(languageDto));
-        }
+        languageRepository.saveAll(languageDtos.stream().map(LanguageMapper::toModel).toList());
     }
 
 }

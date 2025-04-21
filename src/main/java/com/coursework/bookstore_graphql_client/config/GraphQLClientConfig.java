@@ -15,6 +15,8 @@ public class GraphQLClientConfig {
     @Bean
     public HttpGraphQlClient httpGraphQlClient() {
         WebClient webClient = WebClient.builder()
+                .codecs(configurer ->
+                        configurer.defaultCodecs().maxInMemorySize(2 * 1024 * 1024))
                 .baseUrl("https://api.hardcover.app/v1/graphql")
                 .defaultHeader("Authorization", "Bearer " + token)
                 .build();

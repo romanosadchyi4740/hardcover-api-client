@@ -9,12 +9,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "author")
-public class Author {
+@Table(name = "publisher")
+public class Publisher {
     @Id
-    @Column(name = "author_id")
+    @Column(name = "publisher_id")
     private int id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "publisher")
+    private String publisherName;
 }
