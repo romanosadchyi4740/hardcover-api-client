@@ -38,6 +38,9 @@ public class Book {
     @Column(name = "number_in_stock")
     private int numberInStock;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;

@@ -11,6 +11,7 @@ public class BookMapper {
         Book result = new Book();
         result.setId(bookDto.getId());
         result.setTitle(bookDto.getTitle());
+        result.setImageUrl((bookDto.getImage() != null) ? bookDto.getImage().getUrl() : null);
         result.setPrice(bookDto.getPrice());
         result.setNumberInStock(bookDto.getNumberInStock());
         return result;

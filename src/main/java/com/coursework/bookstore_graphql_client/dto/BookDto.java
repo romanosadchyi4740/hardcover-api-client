@@ -13,13 +13,21 @@ import java.util.List;
 public class BookDto {
     private int id;
     private String title;
+    private BookImageDto image;
     private List<BookContributionsDto> contributions = new ArrayList<>();
     private double price = Math.round(Math.random() * 100 + 50);
     private int numberInStock = (int) Math.round(Math.random() * 100);
     private int languageId = (int) Math.ceil(Math.random() * 185);
     private List<GenreDto> cached_tags = new ArrayList<>();
     private int publisherId = (int) (Math.random() < 0.5 ? Math.ceil(Math.random() * 9) :
-            58 + Math.ceil(Math.random() * 89));
+            58 + Math.ceil(Math.random() * 88));
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class BookImageDto {
+        private String url;
+    }
 
     @Data
     @AllArgsConstructor

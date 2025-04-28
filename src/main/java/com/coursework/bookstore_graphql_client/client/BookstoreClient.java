@@ -25,6 +25,9 @@ public class BookstoreClient {
                      books {
                          id
                          title
+                         image {
+                            url
+                         }
                          contributions {
                              author {
                                  id
